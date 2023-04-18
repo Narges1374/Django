@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+    My Posts
+{% endblock %}
+
+{% block bodyblock %}
+    {% for post in object_list %}
+        <h2>
+            Title:{{ post.title }}
+        </h2>
+        <h2>
+            Body:{{ post.body }}
+        </h2>
+        <hr>
+    {% endfor %}
+{% endblock %}

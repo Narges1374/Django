@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+        No title
+    {% endblock %}</title>
+</head>
+<body>
+{% include 'massage.html' %}
+{% block bodyblock %}
+    <h3>
+        No content</h3>
+{% endblock %}
+</body>
+</html>
