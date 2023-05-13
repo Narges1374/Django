@@ -3,5 +3,8 @@
     {{ object.title }}
 {% endblock %}
 {% block bodyblock %}
-    <p>{{ object.bpdy }}</p>
+    <p>Author : {{ object.author }} <br><br>
+       Context : {{ object.body }}<br><br>
+       Date : {{ object.created_at}}</p>
+    <hr><p>Back to <a href="/posts">Posts</a></p>
 {% endblock %}

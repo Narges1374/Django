@@ -3,9 +3,9 @@ from rest_framework.routers import DefaultRouter
 from .views import IndexPage, PostsDetailView, PostsListView, PostViewset
 
 urlpatterns = [
-    path('', IndexPage.as_view()),
-    path('posts', PostsListView.as_view()),
-    path('posts/<pk>', PostsDetailView.as_view()),
+    path('', IndexPage.as_view(), name='home-page'),
+    path('posts', PostsListView.as_view(), name='posts-list'),
+    path('post/<slug:slug>', PostsDetailView.as_view(), name='post-detail'),
 
 ]
 

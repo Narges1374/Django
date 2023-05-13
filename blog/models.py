@@ -15,8 +15,12 @@ class Category(BaseModel):
     name = models.CharField(max_length=10)
     fields = ['name']
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
-        return f'{self.id}-{self.name} '
+        return f'{self.id}-{self.name}'
 
 
 class Post(BaseModel):
@@ -24,6 +28,7 @@ class Post(BaseModel):
     author = models.ForeignKey(User, models.CASCADE)
     body = models.TextField()
     categories = models.ForeignKey(Category, models.CASCADE)
+    slug = models.SlugField()
 
     def __str__(self):
         return f'{self.id}-{self.title}'

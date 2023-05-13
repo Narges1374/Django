@@ -4,13 +4,10 @@
 {% endblock %}
 
 {% block bodyblock %}
+    <h2>List of Posts</h2><br>
     {% for post in object_list %}
-        <h2>
-            Title:{{ post.title }}
-        </h2>
-        <h2>
-            Body:{{ post.body }}
-        </h2>
+        {% include 'includes/post-detail.html'%}
         <hr>
     {% endfor %}
+    <hr><p>Back to <a href="/home">Homepage</a></p>
 {% endblock %}

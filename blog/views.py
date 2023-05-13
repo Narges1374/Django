@@ -2,7 +2,7 @@ from django.http import Http404
 from django.views.generic import TemplateView, ListView, DetailView
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 
 from blog.models import Post
 from blog.serializers import PostSerializer
@@ -10,6 +10,7 @@ from blog.serializers import PostSerializer
 
 class IndexPage(TemplateView):
     template_name = 'home_page.html'
+    queryset = Post.objects.all()
 
 
 class PostsListView(ListView):
@@ -21,9 +22,9 @@ class PostsDetailView(DetailView):
     template_name = 'post.html'
 
     def get_object(self, queryset=None):
-        postId = self.kwargs.get('pk')
+        postSlug = self.kwargs.get('slug')
         try:
-            post = Post.objects.get(pk=postId)
+            post = Post.objects.get(slug=postSlug)
         except:
             raise Http404('post Not Found')
         return post
@@ -42,4 +43,4 @@ class PostDetailApiView(RetrieveAPIView):
 class PostViewset(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = IsAuthenticated

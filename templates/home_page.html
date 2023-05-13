@@ -1,3 +1,15 @@
-<div>
-    <h1>Welcome To My Website Everybody!!!!!</h1>
-</div>
+{% extends 'base.html' %}
+{% block title %}
+    My Blog
+{% endblock %}
+
+{% block bodyblock %}
+    <header>
+      <h1>Welcome To My First Blog</h1>
+    </header>
+    <nav>
+        <ul>
+          <li>Check out all our <a href="/posts">Posts</a></li>
+        </ul>
+    </nav>
+{% endblock %}
